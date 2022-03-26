@@ -1,0 +1,45 @@
+name: notebook-ci
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install node 12.18.2
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.18.2
+      - name: install gitbook tools
+        run: npm install gitbook-cli gitbook-summary -g
+      - name: set timezone to shanghai
+        run: sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+      - name: gitbook install plugins
+        run: gitbook install
+      - name: clear README.md
+        run: echo "" > README.md
+      - name: generate-toc
+        run: book sm --disableTitleFormatting
+      - name: build
+        run: gitbook build
+      - name: install git
+        run: sudo apt-get install git -y
+      - name: publish
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          mkdir -p notebook
+          cd notebook
+          git init
+          git config user.name "Zhenhai Gao"
+          git config user.email "gaozh1988@live.com"
+          ls -R ../_book
+          mv ../_book docs
+          git add docs
+          git commit -m "update notebooks from ci"
+          git push --force "https://$ACCESS_TOKEN@github.com/gaozhenhai/notebook" master:docs

@@ -111,9 +111,11 @@
     * [07-隐藏系统版本信息](1.Linux基础/1.9安全/07-隐藏系统版本信息.md)
     * [08-禁止Control-Alt-Delete键盘重启系统命令](1.Linux基础/1.9安全/08-禁止Control-Alt-Delete键盘重启系统命令.md)
     * [09-密码加固](1.Linux基础/1.9安全/09-密码加固.md)
-  - [111.trouble shooting](1.Linux基础/111.trouble shooting/README.md)
+  - [111.trouble shooting](1.Linux基础/111.trouble%20shooting/README.md)
     - cpu
-      * [cpu占用过高](1.Linux基础/111.trouble shooting/cpu/cpu占用过高.md)
+      * [cpu占用过高](1.Linux基础/111.trouble%20shooting/cpu/cpu占用过高.md)
+    - mem
+      * [进程](1.Linux基础/111.trouble%20shooting/mem/进程.md)
   * [skill](1.Linux基础/skill.md)
 - 2.容器
   - k8s
@@ -127,7 +129,57 @@
       * [intro](2.容器/k8s/base/intro.md)
     - [changelog](2.容器/k8s/changelog/changelog.md)
     - [cmd](2.容器/k8s/cmd/cmd.md)
+    - core
+      - cgroups
+        * [01k8s下cgroups管理](2.容器/k8s/core/cgroups/01k8s下cgroups管理.md)
+        * [02k8s下pod控制组解析](2.容器/k8s/core/cgroups/02k8s下pod控制组解析.md)
+      - cri
+        * [CRI&OCI](2.容器/k8s/core/cri/CRI&OCI.md)
+        * [关于k8s弃用docker-shim](2.容器/k8s/core/cri/关于k8s弃用docker-shim.md)
+      - kubelet
+        - 创建pod
+          - [05启动容器](2.容器/k8s/core/kubelet/创建pod/05启动容器/README.md)
+            - [02创建容器](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/README.md)
+              * [01设置容器重启次数](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/01设置容器重启次数.md)
+              * [02生成创建容器所需配置](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/02生成创建容器所需配置.md)
+              * [03创建容器](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/03创建容器.md)
+              * [04预启动容器](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/04预启动容器.md)
+              * [05生成容器引用信息](2.容器/k8s/core/kubelet/创建pod/05启动容器/02创建容器/05生成容器引用信息.md)
+            * [01拉取镜像](2.容器/k8s/core/kubelet/创建pod/05启动容器/01拉取镜像.md)
+            * [03启动容器](2.容器/k8s/core/kubelet/创建pod/05启动容器/03启动容器.md)
+            * [04执行容器启动后的钩子](2.容器/k8s/core/kubelet/创建pod/05启动容器/04执行容器启动后的钩子.md)
+          - 创建pod沙箱
+            * [pod容器日志管理](2.容器/k8s/core/kubelet/创建pod/创建pod沙箱/pod容器日志管理.md)
+          * [01计算沙箱与容器的变化](2.容器/k8s/core/kubelet/创建pod/01计算沙箱与容器的变化.md)
+          * [04创建pod沙箱](2.容器/k8s/core/kubelet/创建pod/04创建pod沙箱.md)
+        - [启动](2.容器/k8s/core/kubelet/启动/README.md)
+          - [启动模块](2.容器/k8s/core/kubelet/启动/启动模块/README.md)
+            - 启动不依赖容器运行时模块
+              * [01启动镜像管理器](2.容器/k8s/core/kubelet/启动/启动模块/启动不依赖容器运行时模块/01启动镜像管理器.md)
+              * [02启动证书管理器](2.容器/k8s/core/kubelet/启动/启动模块/启动不依赖容器运行时模块/02启动证书管理器.md)
+              * [03启动oomWather](2.容器/k8s/core/kubelet/启动/启动模块/启动不依赖容器运行时模块/03启动oomWather.md)
+              * [TODO_04启动资源分析器](2.容器/k8s/core/kubelet/启动/启动模块/启动不依赖容器运行时模块/TODO_04启动资源分析器.md)
+              * [TODO_README](2.容器/k8s/core/kubelet/启动/启动模块/启动不依赖容器运行时模块/TODO_README.md)
+            * [TODO_PLEG模块](2.容器/k8s/core/kubelet/启动/启动模块/TODO_PLEG模块.md)
+            * [TODO_pod状态管理器](2.容器/k8s/core/kubelet/启动/启动模块/TODO_pod状态管理器.md)
+            * [TODO_确认防火墙规则](2.容器/k8s/core/kubelet/启动/启动模块/TODO_确认防火墙规则.md)
+          - 节点状态
+            * [上报节点状态](2.容器/k8s/core/kubelet/启动/节点状态/上报节点状态.md)
+          * [01启动方式](2.容器/k8s/core/kubelet/启动/01启动方式.md)
+          * [02初始化kubelet指令](2.容器/k8s/core/kubelet/启动/02初始化kubelet指令.md)
+          * [03标识初始化](2.容器/k8s/core/kubelet/启动/03标识初始化.md)
+          * [04kubelet指令解析](2.容器/k8s/core/kubelet/启动/04kubelet指令解析.md)
+          * [05启动流程解析](2.容器/k8s/core/kubelet/启动/05启动流程解析.md)
+          * [06kubelet启动过程的关键流程解析](2.容器/k8s/core/kubelet/启动/06kubelet启动过程的关键流程解析.md)
+          * [07启动流程内一些概念解析](2.容器/k8s/core/kubelet/启动/07启动流程内一些概念解析.md)
+          * [cAdvisor](2.容器/k8s/core/kubelet/启动/cAdvisor.md)
+        - 垃圾回收
+          * [01镜像垃圾回收](2.容器/k8s/core/kubelet/垃圾回收/01镜像垃圾回收.md)
+        * [感悟](2.容器/k8s/core/kubelet/感悟.md)
+      * [pause容器](2.容器/k8s/core/pause容器.md)
     - [faq](2.容器/k8s/faq/faq.md)
+      - kubelet
+        * [垃圾回收](2.容器/k8s/faq/kubelet/垃圾回收.md)
     - [ingress](2.容器/k8s/ingress/ingress.md)
     - [install](2.容器/k8s/install/README.md)
       * [binary](2.容器/k8s/install/binary.md)
@@ -145,10 +197,11 @@
     - [quota](2.容器/k8s/quota/quota.md)
     - [security](2.容器/k8s/security/security.md)
       - 最佳实践
-        * [不适用subPath挂载配置文件](2.容器/k8s/security/最佳实践/不适用subPath挂载配置文件.md)
-        * [为容器指定资源配额](2.容器/k8s/security/最佳实践/为容器指定资源配额.md)
-        * [加固实践](2.容器/k8s/security/最佳实践/加固实践.md)
-        * [取消服务账号自动挂载](2.容器/k8s/security/最佳实践/取消服务账号自动挂载.md)
+        * [01不适用subPath挂载配置文件](2.容器/k8s/security/最佳实践/01不适用subPath挂载配置文件.md)
+        * [02为容器指定资源配额](2.容器/k8s/security/最佳实践/02为容器指定资源配额.md)
+        * [03使用secret存放敏感凭据](2.容器/k8s/security/最佳实践/03使用secret存放敏感凭据.md)
+        * [04取消服务账号自动挂载](2.容器/k8s/security/最佳实践/04取消服务账号自动挂载.md)
+        * [05配置合理的CAP](2.容器/k8s/security/最佳实践/05配置合理的CAP.md)
       - [安全上下文](2.容器/k8s/security/安全上下文/README.md)
         * [01为Pod配置安全上下文](2.容器/k8s/security/安全上下文/01为Pod配置安全上下文.md)
         * [02为Pods配置卷权限和所有权更改策略](2.容器/k8s/security/安全上下文/02为Pods配置卷权限和所有权更改策略.md)
@@ -156,12 +209,20 @@
         * [04为容器设置安全上下文](2.容器/k8s/security/安全上下文/04为容器设置安全上下文.md)
         * [05设置容器的capabilities](2.容器/k8s/security/安全上下文/05设置容器的capabilities.md)
       - 容器CAP解析
-        * [01cap_chown权限分析](2.容器/k8s/security/容器CAP解析/01cap_chown权限分析.md)
-        * [02cap_dac_override权限解析](2.容器/k8s/security/容器CAP解析/02cap_dac_override权限解析.md)
-        * [03cap_fowner权限解析](2.容器/k8s/security/容器CAP解析/03cap_fowner权限解析.md)
-        * [04cap_fsetid权限解析](2.容器/k8s/security/容器CAP解析/04cap_fsetid权限解析.md)
+        * [01cap_chown解析](2.容器/k8s/security/容器CAP解析/01cap_chown解析.md)
+        * [02cap_dac_override解析](2.容器/k8s/security/容器CAP解析/02cap_dac_override解析.md)
+        * [03cap_fowner解析](2.容器/k8s/security/容器CAP解析/03cap_fowner解析.md)
+        * [04cap_fsetid解析](2.容器/k8s/security/容器CAP解析/04cap_fsetid解析.md)
+        * [05cap_kill解析](2.容器/k8s/security/容器CAP解析/05cap_kill解析.md)
+        * [06cap_setgid解析](2.容器/k8s/security/容器CAP解析/06cap_setgid解析.md)
+        * [07cap_setuid解析](2.容器/k8s/security/容器CAP解析/07cap_setuid解析.md)
+        * [09cap_net_bind_service解析](2.容器/k8s/security/容器CAP解析/09cap_net_bind_service解析.md)
+        * [11cap_sys_chroot解析](2.容器/k8s/security/容器CAP解析/11cap_sys_chroot解析.md)
+        * [12cap_mknod解析](2.容器/k8s/security/容器CAP解析/12cap_mknod解析.md)
+        * [13cap_audit_write解析](2.容器/k8s/security/容器CAP解析/13cap_audit_write解析.md)
         * [特权容器缺省CAP权限](2.容器/k8s/security/容器CAP解析/特权容器缺省CAP权限.md)
       * [关于NSA&CISA发布的Kubernetes加固指南](2.容器/k8s/security/关于NSA&CISA发布的Kubernetes加固指南.md)
+      * [非root的容器与设备](2.容器/k8s/security/非root的容器与设备.md)
     - [sidecar](2.容器/k8s/sidecar/sidecar.md)
     - [storage](2.容器/k8s/storage/README.md)
       - pvc
@@ -170,7 +231,8 @@
       * [rook](2.容器/k8s/storage/rook.md)
       * [Velero](2.容器/k8s/storage/Velero.md)
     - workload
-      - pod
+      - [pod](2.容器/k8s/workload/pod/README.md)
+        * [01静态pod](2.容器/k8s/workload/pod/01静态pod.md)
         * [Pod安全策略](2.容器/k8s/workload/pod/Pod安全策略.md)
         * [Pod配置CAP](2.容器/k8s/workload/pod/Pod配置CAP.md)
         * [为Pod配置服务账号](2.容器/k8s/workload/pod/为Pod配置服务账号.md)
@@ -257,6 +319,8 @@
   - [ftp](3.集成部署/ftp/README.md)
   - [git](3.集成部署/git/README.md)
   - [hadoop](3.集成部署/hadoop/README.md)
+  - mail
+    * [搭建内网邮件服务器](3.集成部署/mail/搭建内网邮件服务器.md)
   - [mysql](3.集成部署/mysql/README.md)
   - [nginx](3.集成部署/nginx/README.md)
   - [nodejs](3.集成部署/nodejs/README.md)
