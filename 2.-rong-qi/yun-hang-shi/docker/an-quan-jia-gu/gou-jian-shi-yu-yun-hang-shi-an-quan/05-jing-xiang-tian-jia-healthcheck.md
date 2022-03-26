@@ -1,0 +1,2 @@
+# 05镜像添加HEALTHCHECK
+
