@@ -27,18 +27,18 @@ jobs:
       - name: Exec book sm
         run: book sm --disableTitleFormatting
       - name: Exec gitbook build
-        run: gitbook build . /tmp/docs
+        run: gitbook build . /tmp/books
       - name: Install git tools
         run: sudo apt-get install git -y
       - name: Build notebook and publish
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
-          cd /tmp/docs
+          cd /tmp/books
           git init
           git config --global user.name "Zhenhai Gao"
           git config --global user.email "gaozh1988@live.com"
           git remote add origin "https://github.com/gaozhenhai/notebook.git"
           git add .
           git commit -m "update notebooks from ci"
-          git push --force "https://$ACCESS_TOKEN@github.com/gaozhenhai/notebook" master:docs
+          git push --force "https://$ACCESS_TOKEN@github.com/gaozhenhai/notebook" master:books
